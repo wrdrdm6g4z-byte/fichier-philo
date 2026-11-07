@@ -400,6 +400,9 @@ const AUTEURS = [
   { t: "La nature a brisé le moule", s: "2026-11-02", k: "cours", o: "Les Confessions",
     x: "À l’époque moderne seulement, on pense que chaque homme est unique. Au Moyen Âge, l’individu est déficient par rapport au genre (individuation par la matière).",
     n: ["individu", "singularité", "modernité"] },
+  { t: "L’homme, « animal dépravé »", k: "colle", col: "animalite-humanite/2/0", o: "Discours sur l’origine de l’inégalité",
+    x: "Parti d’un équilibre avec la nature et avec lui-même, l’homme devient, par la propriété et les inégalités, l’ennemi irréconciliable de son semblable. La sauvagerie n’a rien à voir avec la cruauté de l’homme envers l’homme : il y a une animalité propre à l’homme, sans rapport avec celle de l’animal.",
+    n: ["animal", "cruauté", "inégalité", "société", "nature"] },
   { t: "L’éducation selon la nature", s: "2026-10-05", k: "cours", o: "Émile",
     x: "Suivre les rythmes de l’enfant. Kant, d’abord empiriste, l’avait lu avant d’élaborer sa propre morale.",
     n: ["éducation", "nature", "enfance"] }
@@ -725,6 +728,51 @@ const AUTEURS = [
     x: "Fragmentation du territoire en communautés selon les affinités. Le cours cite aussi Homo occidentalis à propos de la société de consommation où l’on croit que tout est donné.",
     n: ["société", "identité", "communauté", "consommation"] }
 ]},
+/* ---------------------- auteurs issus des colles ---------------------- */
+{ id: "porphyre", nom: "Porphyre", dates: "v. 234 – 305", courant: "Néoplatonisme",
+  intro: "L’arbre de Porphyre hiérarchise genres, espèces et individus.",
+  theses: [
+  { t: "L’arbre de Porphyre", k: "colle", col: "animalite-humanite/0/0", o: "Isagoge",
+    x: "Les concepts s’emboîtent selon leur extension et leur compréhension : tout genre englobe les genres subordonnés et les espèces ; chaque espèce se forme par un genre prochain et une différence spécifique. L’homme est un « animal raisonnable » : « animal » est le genre, « raisonnable » la différence spécifique.",
+    n: ["animal", "genre", "espèce", "définition", "universel"] }
+]},
+{ id: "lucrece", nom: "Lucrèce", dates: "v. 98 – 55 av. J.-C.", courant: "Épicurisme",
+  intro: "Le récit de l’hominisation comme humanisation, sans intervention divine.",
+  theses: [
+  { t: "De l’animalité primitive à la culture", k: "colle", col: "animalite-humanite/1/1", o: "De la nature, V",
+    c: "l’usage des cabanes, des peaux et du feu",
+    x: "Les premiers hommes, sans feu ni maison, chassent les bêtes féroces qui les chassent. Par les cabanes, les peaux et le feu, les amours deviennent personnelles (la « Vénus domestique »), les corps s’amollissent, la violence est canalisée par l’amitié. L’animalité est dispersion ; l’humanité organise cette dispersion en « série des générations ». Le récit est aussi évoqué en cours comme modèle du récit standard des origines.",
+    n: ["animal", "origine", "culture", "nature", "amitié"] }
+]},
+{ id: "diderot", nom: "Diderot", dates: "1713 – 1784", courant: "Lumières",
+  intro: "La gradation de sens entre bête, animal et brute.",
+  theses: [
+  { t: "Bête, animal, brute", k: "colle", col: "animalite-humanite/1/0", o: "Encyclopédie, article « Bête, animal, brute »",
+    c: "Brute est un terme de mépris qu’on n’applique aux bêtes et à l’homme qu’en mauvaise part.",
+    x: "Ce n’est pas l’animal qui est connoté négativement, mais la brute : la bête considérée comme affranchie des lois de la raison et de l’honnêteté. La véritable opposition n’est pas entre l’homme et l’animal, mais entre animalité et humanité.",
+    n: ["animal", "brutalité", "langage", "raison"] }
+]},
+{ id: "zola", nom: "Zola", dates: "1840 – 1902", courant: "Naturalisme",
+  intro: "Le fonds pulsionnel de la « bête humaine ».",
+  theses: [
+  { t: "La bête humaine", k: "colle", col: "animalite-humanite/1/0", o: "La Bête humaine",
+    x: "La « bête » signifie l’absence de médiation, l’incapacité de différer la satisfaction de la pulsion. Jacques Lantier, produit de l’hérédité, est décrit avec sa cousine Flore comme une « bête enragée » ivre du désir de tuer, parent des « loups mangeurs d’hommes ».",
+    n: ["animal", "pulsion", "violence", "hérédité"] }
+]},
+{ id: "klemperer", nom: "Victor Klemperer", dates: "1881 – 1960", courant: "Philologie",
+  intro: "La langue nazie animalise l’ennemi.",
+  theses: [
+  { t: "L’animalisation de l’ennemi par la langue", k: "colle", col: "animalite-humanite/2/1", o: "LTI, la langue du Troisième Reich (1947)",
+    x: "La novlangue nazie parle de parasites, de rats, de poux pour présenter la persécution comme une œuvre hygiénique. Il est incongru de faire de l’animal un homme, mais possible de faire de l’homme un animal.",
+    n: ["animal", "déshumanisation", "langage", "totalitarisme"] }
+]},
+{ id: "levinas", nom: "Levinas", dates: "1906 – 1995", courant: "Phénoménologie, éthique",
+  intro: "Le chien Bobby, « dernier kantien » d’Allemagne.",
+  theses: [
+  { t: "Bobby, le dernier kantien d’Allemagne", k: "colle", col: "animalite-humanite/2/1", o: "Difficile liberté, « Nom d’un chien ou le droit naturel »",
+    x: "Le racisme enferme chacun dans une espèce sans possibilité d’en sortir : les bourreaux reproduisent avec les prisonniers le partage entre l’homme et les autres animaux. Seul le chien Bobby reconnaît la dignité des prisonniers : il voit l’homme avant le maître, quand les tortionnaires ne voient que le moyen.",
+    n: ["animal", "dignité", "déshumanisation", "racisme", "autrui"] }
+]},
 { id: "helvetius", nom: "Helvétius", dates: "1715 – 1771", courant: "Lumières, matérialisme",
   intro: "La toute-puissance de l’éducation.",
   theses: [
@@ -751,4 +799,122 @@ const QUESTIONS = [
     q: "Homo occidentalis est attribué à Jérôme Fourquet le 12/10 et à « Ravinovitch » le 02/11 : quel est l’auteur exact ? Et quel est le lien entre l’exemple de Tolstoï (Maître et serviteur, la gangrène) et l’homme comme fin ultime de la nature ?" },
   { s: "2026-11-02", statut: "a-poser", auteur: "kant",
     q: "Kant juge la Révolution en spectateur et « s’en tient à 1789 ». Mais Le Conflit des facultés paraît en 1798, après la Terreur : comment Kant peut-il maintenir son enthousiasme en connaissant 1793 ?" }
+];
+
+/* ========================= SUJETS DE COLLE =========================
+   Un objet par sujet. Plan : parties (I, II, III) > sous-parties (§1, §2, §3).
+   Chaque sous-partie : titre, idee (idée directrice), refs [{ auteur, oeuvre, these }],
+   exemple, defs [{ terme, def }] (définitions importantes, facultatif).
+   ==================================================================== */
+const COLLES = [
+{ id: "animalite-humanite", titre: "Animalité et humanité", source: "Corrigé du professeur",
+  refsPossibles: [
+    "Gombrowicz, Journal : la rencontre de la « vachéité »",
+    "Burroughs, le mythe de Tarzan : une fusion imaginaire de l’humanité et de l’animalité"
+  ],
+  parties: [
+  { num: "I", titre: "L’animalité, concept au second degré formé à partir d’« animal », comme « humanité » à partir d’« homme »",
+    sous: [
+    { num: "§1", titre: "Animal et animalité",
+      idee: "Le langage permet de former des concepts de plus en plus généraux. « Animal » est déjà un terme général (le lion, la gazelle sont des animaux) ; « animalité » est un terme abstrait formé à partir d’animal pour signifier l’appartenance d’une série d’êtres à un ensemble, à une hiérarchie logique et ontologique. L’animalité n’est pas redondante : elle ne se divise pas à son tour en espèces.",
+      refs: [{ auteur: "Porphyre", oeuvre: "Isagoge (introduction aux Catégories d’Aristote)",
+        these: "L’arbre de Porphyre emboîte les concepts selon leur extension et leur compréhension : tout genre englobe les genres subordonnés et les espèces ; chaque espèce se forme par un genre prochain et une différence spécifique. L’homme est un « animal raisonnable » : « animal » est le genre, « raisonnable » la différence spécifique (pensée et langage articulé)." }],
+      exemple: "La substance se divise en substance matérielle et immatérielle, la substance matérielle en corps animé et inanimé, etc. C’est sur ce modèle qu’on forme les concepts d’humanité et d’animalité.",
+      defs: [
+        { terme: "Genre", def: "Ce qui est commun à plusieurs espèces et les englobe." },
+        { terme: "Différence spécifique", def: "Ce qui, ajouté au genre prochain, forme l’espèce (pour l’homme : « raisonnable »)." },
+        { terme: "Extension / compréhension", def: "L’extension est l’ensemble des êtres auxquels un concept s’applique ; la compréhension est l’ensemble des caractères qui le définissent." }
+      ] },
+    { num: "§2", titre: "Le caractère opératoire du concept d’animalité",
+      idee: "L’animalité permet à la pensée d’organiser la pluralité des formes de vie animale sans prendre un concept pour un être. Paradoxe : ce concept très abstrait évite de confondre « l’animal » avec une espèce, l’animal en soi avec cet animal-ci. Il protège contre la tentation platonicienne de redoubler le monde des existences par celui des essences. C’est aussi une économie de mots.",
+      refs: [{ auteur: "Aristote", oeuvre: "Métaphysique (argument du troisième homme)",
+        these: "Contre la participation platonicienne (le loup sensible participe du loup en soi), si l’Idée unifie une multiplicité, il faut une autre Idée pour unifier l’Idée et cette multiplicité, à l’infini. Il est plus économique de poser que l’animal en soi n’existe pas : il n’existe que des individus (substances premières) ; l’universel (substance seconde) est dégagé par l’esprit et immanent aux formes animales." }],
+      exemple: "Le loup : pour Platon, le loup qui existe ici et maintenant participe du loup intelligible ; pour Aristote, inutile de séparer la définition du loup des loups particuliers.",
+      defs: [
+        { terme: "Réaliser une abstraction", def: "Prendre un concept pour un être existant, piège que tend l’abstraction du langage." },
+        { terme: "Substance première / seconde", def: "La substance première est l’individu réel ; la substance seconde est l’universel, la définition dégagée par l’esprit." }
+      ] },
+    { num: "§3", titre: "Problème : un concept abstrait, sans valeur scientifique, à usage polémique",
+      idee: "1° L’animalité évite de confondre l’animal et un animal, mais ne donne aucune connaissance déterminée. Il ne faut pas confondre concept universel et concept abstrait : l’universel est déterminant parce que discriminant (coextensif à une classe) ; l’animalité, formée à partir d’« animal » qui n’est pas un concept scientifique, n’apparaît dans aucune taxonomie. 2° Formée comme « humanité », elle signifie pourtant le contraire : parler de l’animalité d’un homme, c’est dire qu’il ne correspond pas à son essence.",
+      refs: [{ auteur: "Taxonomie moderne", oeuvre: "Classification du vivant",
+        these: "La science classe par domaine, règne, embranchement, classe, ordre, famille, genre et espèce, sans jamais passer par le concept d’animalité." }],
+      exemple: "Les mammifères : vertébrés, vivipares, à mamelles, cœur à quatre cavités, respiration pulmonaire, et seulement eux (universalité coextensive à une classe). L’écureuil roux : règne animal, embranchement des chordés, ordre des rongeurs, famille des sciuridés, genre Sciurus, espèce Sciurus vulgaris.",
+      defs: [
+        { terme: "Concept universel", def: "Concept déterminant et discriminant : il vaut pour tous les êtres d’une classe et seulement pour eux." },
+        { terme: "Concept abstrait", def: "Concept formé à partir d’un terme général, sans pouvoir discriminant ni valeur scientifique." }
+      ] }
+    ] },
+  { num: "II", titre: "L’animalité de l’homme n’a rien à voir avec le concept général d’animalité : c’est ce dont l’homme doit se détacher, en lui et hors de lui",
+    sous: [
+    { num: "§1", titre: "Comparaison des concepts d’animalité et d’humanité",
+      idee: "L’homme et l’animal ne s’opposent pas : « animal » entre dans la définition de l’homme (animal raisonnable, ou animal issu de l’évolution). L’animal s’oppose au végétal et au minéral (les trois règnes). La véritable opposition est entre animalité et humanité : une vie conduite par les pulsions et l’instinct contre une vie fondée sur la détermination de soi par soi, l’autocontrainte.",
+      refs: [
+        { auteur: "Diderot", oeuvre: "Encyclopédie, article « Bête, animal, brute »",
+          these: "Ce n’est pas l’animal qui est connoté négativement, mais la brute : « terme de mépris qu’on n’applique aux bêtes et à l’homme qu’en mauvaise part », la bête « affranchie des lois de la raison et de l’honnêteté »." },
+        { auteur: "Zola", oeuvre: "La Bête humaine",
+          these: "La « bête » concentre ce que signifiait la brutalité : l’absence de médiation, l’incapacité de différer la satisfaction de la pulsion. Parler de « bête humaine » rappelle un fonds pulsionnel présent en l’homme et opposé à son humanité." }
+      ],
+      exemple: "Jacques Lantier, produit de la misère et de l’alcoolisme de ses parents : face à sa cousine Flore, Zola le dit « haletant », plein de « fureur » et de « férocité », « bête enragée » ivre du désir de tuer, apparenté aux « loups mangeurs d’hommes » (le loup-garou).",
+      defs: [
+        { terme: "Anthropocène", def: "Terme créé par Paul Crutzen (Nobel de chimie) : non pas un nouveau règne du vivant, mais une époque où l’homme interagit avec le climat." },
+        { terme: "Brute / bête / bêtise", def: "La brutalité (de brute) est plus dégradante que la bêtise (de bête) ; selon les termes présents, le sens se redistribue." }
+      ] },
+    { num: "§2", titre: "La lutte de l’humanité contre l’animalité",
+      idee: "L’animalité est le véritable contraire de l’humanité : l’homme ne parvient à son essence qu’en refoulant une partie de lui-même et en dominant les autres êtres. Le récit de l’hominisation est en même temps celui de l’humanisation : le passage de la nature à la culture.",
+      refs: [{ auteur: "Lucrèce", oeuvre: "De la nature, V",
+        these: "Sans intervention divine, l’homme dépasse progressivement sa condition animale primitive. Les premiers hommes, sans feu, sans maison, chassent les bêtes féroces qui les chassent. Par « l’usage des cabanes, des peaux et du feu », les amours deviennent personnelles (la « Vénus domestique »), les corps s’amollissent, la violence est canalisée par l’amitié et la concorde. L’animalité est dispersion ; l’humanité, par Vénus et les arts, organise cette dispersion en « série des générations »." }],
+      exemple: "Le lien entre domus (la maison) et domestication : l’errance, la vulnérabilité face aux bêtes et la dépendance aux rythmes de la nature cessent avec l’habitat. Comme dans l’atomisme, un monde naît de la connexion régulière des atomes.",
+      defs: [
+        { terme: "Hominisation / humanisation", def: "L’hominisation est l’évolution biologique vers l’homme ; l’humanisation, le passage à la culture. Chez Lucrèce, les deux coïncident." }
+      ] },
+    { num: "§3", titre: "Problème : le prix du passage à la vie civilisée",
+      idee: "Le récit de Lucrèce décrit un dressage par lequel l’homme intériorise la contrainte pour refouler son animalité. La culture fait des pulsions communes à l’homme et à l’animal un passé biologique honteux, à oublier ou à sublimer. Mais le refoulé fait retour : l’homme pourrait être capable d’animalité non par régression, mais par radicalisation de ses pulsions, sous la forme de conduites inhumaines sans rapport avec le comportement animal.",
+      refs: [{ auteur: "La psychanalyse (Freud)", oeuvre: "",
+        these: "Elle pense les mécanismes qui articulent psychisme et monde extérieur par le corps : la phobie projette à l’extérieur des contenus inconscients ; le refoulement fait disparaître ce qui menace l’équilibre psychique, mais tout refoulement s’accompagne d’un retour du refoulé." }],
+      exemple: "Le retour du refoulé se manifeste de façon éminente avec l’animalité : la culture élève des « digues » contre les pulsions, sans garantie qu’elles tiennent.",
+      defs: [
+        { terme: "Refoulement", def: "Disparition de contenus gênants qui remettraient en cause l’équilibre homéostatique du psychisme ; il se produit sous la forme d’un retour du refoulé." },
+        { terme: "Phobie", def: "Mécanisme psychique par lequel on projette à l’extérieur des contenus inconscients." },
+        { terme: "Sublimation", def: "Transformation des pulsions en activités socialement valorisées." }
+      ] }
+    ] },
+  { num: "III", titre: "L’animalité est la transgression par l’homme des limites de sa propre humanité : une régression impossible et l’expérience inquiétante d’un tel dépassement",
+    sous: [
+    { num: "§1", titre: "L’homme comme « animal dépravé »",
+      idee: "L’humanitas renvoie aux humanités, qui donnent une image idéalisée de l’homme ; l’art est un mensonge admis qui fait admirer ce qui n’est pas admirable. L’histoire montre au contraire guerres et atrocités, bien plus meurtrières que les rencontres avec les animaux. L’homme relègue sa violence dans l’animalité et l’extériorise sous la forme d’une prétendue « loi de la jungle », qui n’existe pas : dans la jungle règne un équilibre entre les espèces.",
+      refs: [
+        { auteur: "Rousseau", oeuvre: "Discours sur l’origine et les fondements de l’inégalité",
+          these: "L’homme est « un animal dépravé » : parti d’un équilibre avec la nature et avec lui-même, il devient par la propriété et les inégalités l’ennemi irréconciliable de son semblable. La sauvagerie n’a rien à voir avec la cruauté de l’homme envers l’homme. Il y a une animalité propre à l’homme, sans rapport avec celle de l’animal." },
+        { auteur: "Aristote", oeuvre: "Poétique",
+          these: "L’homme tire plaisir de l’imitation, même de récits de meurtres ou d’incestes." },
+        { auteur: "Aulu-Gelle", oeuvre: "Nuits attiques",
+          these: "L’humanitas, ce sont les humanités : la connaissance et la pratique du beau et du vrai." }
+      ],
+      exemple: "La cruauté humaine prend des formes multiples, de la raillerie jusqu’à l’indifférence aux maux de ses semblables.",
+      defs: [] },
+    { num: "§2", titre: "La tension entre l’animalité et l’humanité",
+      idee: "Si l’on pense l’humanité dans la continuité des formes de vie animale, la tension se manifeste par une possibilité propre à l’homme : déshumaniser l’autre homme en le réduisant à l’état de chose ou d’animal. Il est incongru de faire de l’animal un homme, mais possible de faire de l’homme un animal. Seul l’homme peut manifester l’extrême de son humanité par le dépouillement total de son humanité.",
+      refs: [
+        { auteur: "Victor Klemperer", oeuvre: "LTI, la langue du Troisième Reich (1947)",
+          these: "La langue nazie animalise l’ennemi (parasites, rats, poux) pour présenter la persécution comme une œuvre hygiénique." },
+        { auteur: "Levinas", oeuvre: "Difficile liberté, « Nom d’un chien ou le droit naturel »",
+          these: "Le racisme n’est pas une extension abusive du concept de race : c’est l’enfermement de chacun dans une espèce, sans possibilité d’en sortir. Les bourreaux reproduisent avec les prisonniers le partage inaugural entre l’homme et les autres animaux, et en font une espèce inférieure exclue du monde commun." }
+      ],
+      exemple: "Dans le camp de prisonniers où Levinas est interné, seul un chien, Bobby, est « le dernier kantien » d’Allemagne : il voit l’homme avant le maître et reconnaît sa dignité, quand les tortionnaires ne voient que le moyen, la main-d’œuvre exploitable jusqu’à la mort.",
+      defs: [
+        { terme: "Déshumanisation", def: "Réduction d’un homme à l’état de chose ou d’animal : une animalité d’un genre nouveau, propre à l’homme." },
+        { terme: "Métamorphose", def: "Normalement commencement d’une vie nouvelle ; ici, forme de la déchéance ultime." }
+      ] },
+    { num: "§3", titre: "La fusion impossible",
+      idee: "Par compensation, à l’animalisation extrême de l’homme répond aujourd’hui une humanisation parfois extrême de l’animal. Mais des caractères biologiques communs ne suffisent pas à fonder une communauté morale et politique de droits et d’obligations. La différence, longtemps prise pour une supériorité, peut changer de sens : l’homme est l’animal qui a conscience d’être un animal, et donc de ne pas l’être tout à fait. L’animalité ne précède pas l’humanité : elle vient en second, quand l’homme réfléchit à sa place dans la nature.",
+      refs: [
+        { auteur: "Gombrowicz", oeuvre: "Journal", these: "La rencontre de la « vachéité » : l’animal comme altérité irréductible, interlocuteur muet qui interroge l’humanité." },
+        { auteur: "Burroughs", oeuvre: "Tarzan", these: "Le mythe de Tarzan représente, sur un mode imaginaire, une fusion de l’humanité et de l’animalité." }
+      ],
+      exemple: "On imagine les débuts de l’humanité comme une lutte quotidienne contre les prédateurs ; or les hommes sont plus probablement morts de maladies et d’infections, et les animaux cherchaient sans doute à les éviter.",
+      defs: [
+        { terme: "Communauté morale et politique", def: "Société fondée sur des droits et des obligations partagés, que des caractères biologiques communs ne suffisent pas à créer." }
+      ] }
+    ] }
+  ] }
 ];

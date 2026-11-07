@@ -95,7 +95,7 @@ const chip = (n, extra = "") => `<a class="chip" href="#/notion/${enc(n)}">${esc
 function theseCard(a, t, i, q = "", showAuthor = false, idx = 0) {
   const id = `${a.id}-${i}`;
   const src = t.k === "colle"
-    ? `<span class="src colle">Colle</span>`
+    ? (t.col ? `<a class="src colle" href="#/colle/${t.col}" title="Voir le sujet de colle">Colle · ${esc((COLLES.find(c => c.id === t.col.split("/")[0]) || {}).titre || "")}</a>` : `<span class="src colle">Colle</span>`)
     : `<a class="src cours" href="#/seance/${t.s}" title="Voir la séance">Cours · ${fshort(t.s)}</a>`;
   return `<article class="these rise" id="t-${id}" style="--i:${Math.min(idx, 12)}">
     <div class="these-top">
@@ -319,6 +319,61 @@ function viewQuestions() {
   </div>`;
 }
 
+/* Sujets de colle : liste > plan > sous-partie */
+const COLLE_BY = Object.fromEntries((typeof COLLES !== "undefined" ? COLLES : []).map(c => [c.id, c]));
+function viewColles() {
+  return `<div class="page" style="max-width:960px">
+    <div class="eyebrow rise">Corrigés du professeur</div>
+    <h1 class="h-display rise" style="font-size:clamp(2.8rem,7vw,4.6rem);margin:10px 0 12px">Sujets de colle</h1>
+    <p class="lead rise">Choisissez un sujet pour voir le plan proposé par le professeur.</p>
+    <div class="colle-grid">${COLLES.map((c, k) => `<a class="colle-btn rise" style="--i:${k}" href="#/colle/${c.id}">
+      <span class="colle-num">Sujet ${String(k + 1).padStart(2, "0")}</span>
+      <span class="colle-titre">« ${esc(c.titre)} »</span>
+      <span class="colle-meta">${c.parties.length} parties · ${c.parties.reduce((n, p) => n + p.sous.length, 0)} sous-parties</span>
+      <span class="colle-arrow" aria-hidden="true">→</span></a>`).join("")}</div>
+  </div>`;
+}
+function viewColle(id) {
+  const c = COLLE_BY[id];
+  if (!c) return viewNotFound();
+  return `<div class="page" style="max-width:960px">
+    <a class="back rise" href="#/colles">← Tous les sujets</a>
+    <div class="eyebrow rise" style="margin-top:22px">Plan du sujet</div>
+    <h1 class="h-display rise" style="font-size:clamp(2.4rem,6.5vw,4.2rem);margin:10px 0 30px">« ${esc(c.titre)} »</h1>
+    <ol class="plan">${c.parties.map((p, pi) => `<li class="plan-part rise" style="--i:${pi * 2}">
+      <div class="plan-head"><span class="plan-num">${p.num}</span><h2>${esc(p.titre)}</h2></div>
+      <div class="plan-subs">${p.sous.map((sp, si) => `<a class="plan-sub" href="#/colle/${c.id}/${pi}/${si}">
+        <span class="plan-sp">${esc(sp.num)}</span><span>${esc(sp.titre)}</span><span class="colle-arrow" aria-hidden="true">→</span></a>`).join("")}</div>
+    </li>`).join("")}</ol>
+  </div>`;
+}
+function viewSousPartie(id, pi, si) {
+  const c = COLLE_BY[id], p = c?.parties[pi], sp = p?.sous[si];
+  if (!sp) return viewNotFound();
+  const flat = c.parties.flatMap((P, a) => P.sous.map((S, b) => ({ a, b, P, S })));
+  const k = flat.findIndex(x => x.a === +pi && x.b === +si), prev = flat[k - 1], next = flat[k + 1];
+  const authorLink = nom => { const a = AUTEURS.find(x => norm(x.nom) === norm(nom)); return a ? `<a href="#/auteur/${a.id}">${esc(nom)}</a>` : esc(nom); };
+  return `<div class="page" style="max-width:860px">
+    <a class="back rise" href="#/colle/${c.id}">← Plan : « ${esc(c.titre)} »</a>
+    <div class="eyebrow rise" style="margin-top:22px">Partie ${p.num} · ${esc(sp.num)}</div>
+    <h1 class="h-display rise" style="font-size:clamp(2.1rem,5.5vw,3.4rem);margin:10px 0 8px">${esc(sp.titre)}</h1>
+    <p class="sp-partie rise">${p.num}. ${esc(p.titre)}</p>
+    <div class="sp-blocks">
+      <section class="sp-block rise" style="--i:1"><h2><span class="sp-ico">①</span>Idée directrice</h2><p>${esc(sp.idee)}</p></section>
+      <section class="sp-block rise" style="--i:2"><h2><span class="sp-ico">②</span>Auteur${sp.refs.length > 1 ? "s" : ""} et thèse${sp.refs.length > 1 ? "s" : ""}</h2>
+        ${sp.refs.map(r => `<div class="sp-ref"><div class="sp-auteur">${authorLink(r.auteur)}${r.oeuvre ? `<span>${esc(r.oeuvre)}</span>` : ""}</div><p>${esc(r.these)}</p></div>`).join("")}</section>
+      <section class="sp-block rise" style="--i:3"><h2><span class="sp-ico">③</span>Exemple</h2><p>${esc(sp.exemple)}</p></section>
+    </div>
+    ${sp.defs?.length ? `<section class="sp-defs rise" style="--i:4"><h2>Définitions importantes</h2>
+      <dl>${sp.defs.map(d => `<div><dt>${esc(d.terme)}</dt><dd>${esc(d.def)}</dd></div>`).join("")}</dl></section>` : ""}
+    ${!next && c.refsPossibles?.length ? `<section class="sp-defs rise"><h2>Autres références possibles</h2><ul>${c.refsPossibles.map(r => `<li>${esc(r)}</li>`).join("")}</ul></section>` : ""}
+    <nav class="section-head" style="margin-top:44px" aria-label="Sous-partie précédente et suivante">
+      ${prev ? `<a class="link-more" href="#/colle/${c.id}/${prev.a}/${prev.b}">← ${prev.P.num} ${esc(prev.S.num)} ${esc(prev.S.titre)}</a>` : "<span></span>"}
+      ${next ? `<a class="link-more" href="#/colle/${c.id}/${next.a}/${next.b}">${next.P.num} ${esc(next.S.num)} ${esc(next.S.titre)} →</a>` : ""}
+    </nav>
+  </div>`;
+}
+
 function viewNotFound() {
   return `<div class="page"><h1 class="h-display" style="font-size:3rem">Page introuvable</h1><p class="lead">Ce lien ne correspond à aucune fiche. <a href="#/">Retour à l’accueil</a>.</p></div>`;
 }
@@ -339,6 +394,8 @@ function route() {
     case "seances": html = viewSeances(); break;
     case "seance": html = viewSeance(p1); nav = "seances"; break;
     case "questions": html = viewQuestions(); after = afterQuestions; break;
+    case "colles": html = viewColles(); break;
+    case "colle": html = p2 !== undefined ? viewSousPartie(p1, p2, parts[3]) : viewColle(p1); nav = "colles"; break;
     default: html = viewNotFound();
   }
   const render = () => {
