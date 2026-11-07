@@ -369,7 +369,8 @@ h1, h2, h3 { text-wrap: balance; }
 .colle-btn:hover::before { transform: scaleY(1); }
 .colle-num, .colle-meta { font-family: var(--f-mono); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
 .colle-num { color: var(--colle); }
-.colle-titre { font-family: var(--f-display); font-size: 1.75rem; line-height: 1.1; }
+.colle-attr { font-family: var(--f-body); font-style: italic; font-size: .6em; color: var(--ink-3); white-space: nowrap; }
+.colle-titre { font-family: var(--f-display); font-size: 1.5rem; line-height: 1.15; text-wrap: balance; }
 .colle-arrow { position: absolute; right: 20px; top: 50%; transform: translateY(-50%); color: var(--colle); font-size: 1.2rem; transition: transform .3s var(--ease); }
 .colle-btn:hover .colle-arrow, .plan-sub:hover .colle-arrow { transform: translate(5px, -50%); }
 

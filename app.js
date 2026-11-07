@@ -27,6 +27,14 @@ async function copy(text) {
 }
 
 /* ---------- Index ---------- */
+// Thèses tirées des colles : rattachées à la fiche de leur auteur (créée au besoin).
+if (typeof THESES_COLLES !== "undefined") THESES_COLLES.forEach(({ aid, nom, dates, courant, intro, majeur, ...t }) => {
+  let a = AUTEURS.find(x => x.id === aid);
+  if (!a) { a = { id: aid, nom, dates: dates || "", courant: courant || "", intro: intro || "", theses: [] }; AUTEURS.push(a); }
+  if (majeur) a.majeur = true;
+  if (intro && !a.intro) a.intro = intro;
+  a.theses.push({ k: "colle", ...t });
+});
 AUTEURS.sort((a, b) => (b.majeur ? 1 : 0) - (a.majeur ? 1 : 0) || a.nom.localeCompare(b.nom, "fr"));
 const ALPHA = [...AUTEURS].sort((a, b) => a.nom.localeCompare(b.nom, "fr"));
 const BYID = Object.fromEntries(AUTEURS.map(a => [a.id, a]));
@@ -90,12 +98,13 @@ function grouped(results) {
 
 /* ---------- Composants ---------- */
 const enc = s => encodeURIComponent(s);
+const short = (s, n) => s.length > n ? s.slice(0, n).replace(/\s+\S*$/, "") + "…" : s;
 const chip = (n, extra = "") => `<a class="chip" href="#/notion/${enc(n)}">${esc(n)}${extra}</a>`;
 
 function theseCard(a, t, i, q = "", showAuthor = false, idx = 0) {
   const id = `${a.id}-${i}`;
   const src = t.k === "colle"
-    ? (t.col ? `<a class="src colle" href="#/colle/${t.col}" title="Voir le sujet de colle">Colle · ${esc((COLLES.find(c => c.id === t.col.split("/")[0]) || {}).titre || "")}</a>` : `<span class="src colle">Colle</span>`)
+    ? (t.col ? `<a class="src colle" href="#/colle/${t.col}" title="Voir le sujet de colle">Colle · ${esc(short((COLLES.find(c => c.id === t.col.split("/")[0]) || {}).titre || "", 34))}</a>` : `<span class="src colle">Colle</span>`)
     : `<a class="src cours" href="#/seance/${t.s}" title="Voir la séance">Cours · ${fshort(t.s)}</a>`;
   return `<article class="these rise" id="t-${id}" style="--i:${Math.min(idx, 12)}">
     <div class="these-top">
@@ -320,6 +329,7 @@ function viewQuestions() {
 }
 
 /* Sujets de colle : liste > plan > sous-partie */
+const ctitre = c => `« ${esc(c.titre)} »${c.attribution ? ` <span class="colle-attr">(${esc(c.attribution)})</span>` : ""}`;
 const COLLE_BY = Object.fromEntries((typeof COLLES !== "undefined" ? COLLES : []).map(c => [c.id, c]));
 function viewColles() {
   return `<div class="page" style="max-width:960px">
@@ -328,7 +338,7 @@ function viewColles() {
     <p class="lead rise">Choisissez un sujet pour voir le plan proposé par le professeur.</p>
     <div class="colle-grid">${COLLES.map((c, k) => `<a class="colle-btn rise" style="--i:${k}" href="#/colle/${c.id}">
       <span class="colle-num">Sujet ${String(k + 1).padStart(2, "0")}</span>
-      <span class="colle-titre">« ${esc(c.titre)} »</span>
+      <span class="colle-titre">${ctitre(c)}</span>
       <span class="colle-meta">${c.parties.length} parties · ${c.parties.reduce((n, p) => n + p.sous.length, 0)} sous-parties</span>
       <span class="colle-arrow" aria-hidden="true">→</span></a>`).join("")}</div>
   </div>`;
@@ -339,7 +349,7 @@ function viewColle(id) {
   return `<div class="page" style="max-width:960px">
     <a class="back rise" href="#/colles">← Tous les sujets</a>
     <div class="eyebrow rise" style="margin-top:22px">Plan du sujet</div>
-    <h1 class="h-display rise" style="font-size:clamp(2.4rem,6.5vw,4.2rem);margin:10px 0 30px">« ${esc(c.titre)} »</h1>
+    <h1 class="h-display rise" style="font-size:clamp(2.4rem,6.5vw,4.2rem);margin:10px 0 30px">${ctitre(c)}</h1>
     <ol class="plan">${c.parties.map((p, pi) => `<li class="plan-part rise" style="--i:${pi * 2}">
       <div class="plan-head"><span class="plan-num">${p.num}</span><h2>${esc(p.titre)}</h2></div>
       <div class="plan-subs">${p.sous.map((sp, si) => `<a class="plan-sub" href="#/colle/${c.id}/${pi}/${si}">
